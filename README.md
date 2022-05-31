@@ -3,6 +3,7 @@ ONNXRuntimeでYOLOXを動かすサンプル
 
 ## 準備
 - `pip install onnxruntime opencv-python python-box numba`
+- models フォルダを作成
 - [YOLOX-ONNXRuntime in Python](https://yolox.readthedocs.io/en/latest/demo/onnx_readme.html)からWeightsをダウンロードしmodelsに置く
 
 # 参考
