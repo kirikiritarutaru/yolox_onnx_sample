@@ -9,14 +9,14 @@ from utils import (COCO_CLASSES, demo_postprocess,
 config = Box({
     "img_size": 416,
     "model_path": 'models/yolox_nano.onnx',
-    "score_thr": 0.3,
+    "score_thr": 0.2,
 })
 
-config = Box({
-    "img_size": 640,
-    "model_path": 'models/yolox_s.onnx',
-    "score_thr": 0.3,
-})
+# config = Box({
+#     "img_size": 640,
+#     "model_path": 'models/yolox_s.onnx',
+#     "score_thr": 0.3,
+# })
 
 # config = Box({
 #     "img_size": 640,
@@ -45,10 +45,10 @@ if __name__ == '__main__':
         scores = predictions[:, 4:5] * predictions[:, 5:]
 
         boxes_xyxy = np.ones_like(boxes)
-        boxes_xyxy[:, 0] = boxes[:, 0] - boxes[:, 2]/2.
-        boxes_xyxy[:, 1] = boxes[:, 1] - boxes[:, 3]/2.
-        boxes_xyxy[:, 2] = boxes[:, 0] + boxes[:, 2]/2.
-        boxes_xyxy[:, 3] = boxes[:, 1] + boxes[:, 3]/2.
+        boxes_xyxy[:, 0] = boxes[:, 0] - boxes[:, 2] / 2.
+        boxes_xyxy[:, 1] = boxes[:, 1] - boxes[:, 3] / 2.
+        boxes_xyxy[:, 2] = boxes[:, 0] + boxes[:, 2] / 2.
+        boxes_xyxy[:, 3] = boxes[:, 1] + boxes[:, 3] / 2.
         boxes_xyxy /= ratio
         dets = multiclass_nms_class_agnostic(
             boxes_xyxy, scores, nms_thr=0.45, score_thr=0.1
